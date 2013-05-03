@@ -1,0 +1,276 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{1D94629E-0159-4A9D-B8F9-616C0BEB41F6}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Cselian.Cards</RootNamespace>
+    <AssemblyName>Cselian.Cards</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Card.cs" />
+    <Compile Include="CardView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardView.Designer.cs">
+      <DependentUpon>CardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Face.cs" />
+    <Compile Include="CardGame.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CardGame.Designer.cs">
+      <DependentUpon>CardGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Freecell.cs" />
+    <Compile Include="Program.cs" />
+    <EmbeddedResource Include="CardView.resx">
+      <DependentUpon>CardView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardGame.resx">
+      <DependentUpon>CardGame.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <Compile Include="Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Suit.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-q-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\back-blue-75-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\back-blue-75-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\back-blue-75-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\back-red-75-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\back-red-75-2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\back-red-75-3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-2-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-3-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-4-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-5-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-6-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-7-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-8-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-9-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-10-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-a-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-j-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-k-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\clubs-q-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-2-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-3-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-4-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-5-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-6-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-7-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-8-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-9-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-10-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-a-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-j-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-k-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\diamonds-q-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-2-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-3-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-4-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-5-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-6-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-7-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-8-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-9-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-10-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-a-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-j-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-k-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\hearts-q-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\joker-b-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\joker-r-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-2-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-3-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-4-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-5-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-6-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-7-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-8-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-9-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-10-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-a-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-j-75.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Art\75\spades-k-75.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -20,6 +20,7 @@ namespace Cselian.Chess
 			Boards.Panel2.AutoScroll = true;
 			Boards.Panel2.AutoScrollMinSize = OppBoard.Size;
 			All.FixedPanel = FixedPanel.Panel1;
+			WinHelper.CycleTristate(RemoteMnu, RemoteMnu_CheckStateChanged);
 		}
 
 		void ChessGame_DoubleClick(object sender, EventArgs e)
@@ -39,6 +40,12 @@ namespace Cselian.Chess
 				b1.SetOtherBoard(b2);
 				b2.SetOtherBoard(b1);
 			}
+		}
+
+		private void RemoteMnu_CheckStateChanged(object sender, EventArgs e)
+		{
+			var itm = (ToolStripMenuItem)sender;
+			MessageBox.Show("Changed to " + itm.CheckState); 
 		}
 	}
 }

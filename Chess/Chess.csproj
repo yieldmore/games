@@ -68,6 +68,7 @@
     <Compile Include="PieceId.cs" />
     <Compile Include="PieceEventArgs.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="WinHelper.cs" />
     <EmbeddedResource Include="ChessGame.resx">
       <DependentUpon>ChessGame.cs</DependentUpon>
     </EmbeddedResource>

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.All = new System.Windows.Forms.SplitContainer();
 			this.Killed = new System.Windows.Forms.SplitContainer();
 			this.OppKilled = new System.Windows.Forms.FlowLayoutPanel();
@@ -35,6 +36,8 @@
 			this.Boards = new System.Windows.Forms.SplitContainer();
 			this.Board = new System.Windows.Forms.Panel();
 			this.OppBoard = new System.Windows.Forms.Panel();
+			this.MnuGame = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.RemoteMnu = new System.Windows.Forms.ToolStripMenuItem();
 			this.All.Panel1.SuspendLayout();
 			this.All.Panel2.SuspendLayout();
 			this.All.SuspendLayout();
@@ -44,6 +47,7 @@
 			this.Boards.Panel1.SuspendLayout();
 			this.Boards.Panel2.SuspendLayout();
 			this.Boards.SuspendLayout();
+			this.MnuGame.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// All
@@ -142,12 +146,27 @@
 			this.OppBoard.Size = new System.Drawing.Size(149, 119);
 			this.OppBoard.TabIndex = 5;
 			// 
+			// MnuGame
+			// 
+			this.MnuGame.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.RemoteMnu});
+			this.MnuGame.Name = "MnuGame";
+			this.MnuGame.Size = new System.Drawing.Size(157, 48);
+			// 
+			// RemoteMnu
+			// 
+			this.RemoteMnu.Name = "RemoteMnu";
+			this.RemoteMnu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
+			this.RemoteMnu.Size = new System.Drawing.Size(156, 22);
+			this.RemoteMnu.Text = "&Remote";
+			// 
 			// ChessGame
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.AutoScroll = true;
 			this.ClientSize = new System.Drawing.Size(428, 296);
+			this.ContextMenuStrip = this.MnuGame;
 			this.Controls.Add(this.All);
 			this.Name = "ChessGame";
 			this.Padding = new System.Windows.Forms.Padding(10);
@@ -164,6 +183,7 @@
 			this.Boards.Panel2.ResumeLayout(false);
 			this.Boards.Panel2.PerformLayout();
 			this.Boards.ResumeLayout(false);
+			this.MnuGame.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -177,6 +197,8 @@
 		private System.Windows.Forms.SplitContainer Boards;
 		private System.Windows.Forms.Panel Board;
 		private System.Windows.Forms.Panel OppBoard;
+		private System.Windows.Forms.ContextMenuStrip MnuGame;
+		private System.Windows.Forms.ToolStripMenuItem RemoteMnu;
 
 
 	}

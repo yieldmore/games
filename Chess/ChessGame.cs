@@ -47,5 +47,10 @@ namespace Cselian.Chess
 			var itm = (ToolStripMenuItem)sender;
 			MessageBox.Show("Changed to " + itm.CheckState); 
 		}
+
+		private void AboutMnu_Click(object sender, EventArgs e)
+		{
+			new About().ShowDialog();
+		}
 	}
 }

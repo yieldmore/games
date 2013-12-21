@@ -13,13 +13,17 @@ namespace Cselian.Chess
 		readonly Square[,] squares;
 		readonly List<PieceId> moved;
 
+		public static void Resolve(List<Square> list, Piece piece, Square[,] s, List<PieceId> moved)
+		{
+			new MoveResolver(list, piece, s, moved).Resolve();
+		}
 
-		public MoveResolver(List<Square> list, Piece piece, Square[,] s, List<PieceId> moved)
+		private MoveResolver(List<Square> list, Piece piece, Square[,] s, List<PieceId> moved)
 		{
 			o = list; p = piece; this.s = p.Square; squares = s; this.moved = moved;
 		}
 
-		public void Resolve()
+		private void Resolve()
 		{
 			switch (p.Id.Who)
 			{
@@ -88,8 +92,6 @@ namespace Cselian.Chess
 				o.Add(squares[p.Square.X + 2, p.Square.Y]);
 			}
 		}
-
-		
 
 		private void CheckSides(bool diagonal)
 		{

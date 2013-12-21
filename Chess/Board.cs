@@ -113,7 +113,7 @@ namespace Cselian.Chess
 			Piece piece = sender as Piece;
 			board.FindForm().Text = string.Format("Moving {0} from {1}", piece.Name, piece.Square.Name);
 			if (piece.Id.Black != blacksTurn || (null != otherBoard && blacksTurn != inverted)) return;
-			new MoveResolver(e.Options, piece, AllSquares, moved).Resolve();
+			MoveResolver.Resolve(e.Options, piece, AllSquares, moved);
 		}
 
 	}

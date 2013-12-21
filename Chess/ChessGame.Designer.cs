@@ -38,6 +38,7 @@
 			this.OppBoard = new System.Windows.Forms.Panel();
 			this.MnuGame = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.RemoteMnu = new System.Windows.Forms.ToolStripMenuItem();
+			this.AboutMnu = new System.Windows.Forms.ToolStripMenuItem();
 			this.All.Panel1.SuspendLayout();
 			this.All.Panel2.SuspendLayout();
 			this.All.SuspendLayout();
@@ -149,9 +150,10 @@
 			// MnuGame
 			// 
 			this.MnuGame.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.RemoteMnu});
+            this.RemoteMnu,
+            this.AboutMnu});
 			this.MnuGame.Name = "MnuGame";
-			this.MnuGame.Size = new System.Drawing.Size(157, 48);
+			this.MnuGame.Size = new System.Drawing.Size(157, 70);
 			// 
 			// RemoteMnu
 			// 
@@ -159,6 +161,14 @@
 			this.RemoteMnu.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R)));
 			this.RemoteMnu.Size = new System.Drawing.Size(156, 22);
 			this.RemoteMnu.Text = "&Remote";
+			// 
+			// AboutMnu
+			// 
+			this.AboutMnu.Name = "AboutMnu";
+			this.AboutMnu.ShortcutKeys = System.Windows.Forms.Keys.F1;
+			this.AboutMnu.Size = new System.Drawing.Size(156, 22);
+			this.AboutMnu.Text = "About";
+			this.AboutMnu.Click += new System.EventHandler(this.AboutMnu_Click);
 			// 
 			// ChessGame
 			// 
@@ -199,6 +209,7 @@
 		private System.Windows.Forms.Panel OppBoard;
 		private System.Windows.Forms.ContextMenuStrip MnuGame;
 		private System.Windows.Forms.ToolStripMenuItem RemoteMnu;
+		private System.Windows.Forms.ToolStripMenuItem AboutMnu;
 
 
 	}

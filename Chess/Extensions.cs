@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace Cselian.Chess
@@ -23,8 +24,8 @@ namespace Cselian.Chess
 		/// <returns>null when not found</returns>
 		public static Piece Item(List<Piece> allPieces, PieceId id)
 		{
-			foreach (var item in allPieces) if (item.Id.Equals(id)) 
-				return item;
+			foreach (var item in allPieces) if (item.Id.Equals(id))
+					return item;
 			return null;
 		}
 

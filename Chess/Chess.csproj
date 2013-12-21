@@ -51,10 +51,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
     <Compile Include="Board.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="ChessGame.cs">
@@ -69,6 +76,9 @@
     <Compile Include="PieceEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="WinHelper.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ChessGame.resx">
       <DependentUpon>ChessGame.cs</DependentUpon>
     </EmbeddedResource>

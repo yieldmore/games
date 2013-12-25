@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Cselian.Chess
+namespace Cselian.Chess.Game
 {
 	public class Board
 	{
@@ -115,6 +115,5 @@ namespace Cselian.Chess
 			if (piece.Id.Black != blacksTurn || (null != otherBoard && blacksTurn != inverted)) return;
 			MoveResolver.Resolve(e.Options, piece, AllSquares, moved);
 		}
-
 	}
 }

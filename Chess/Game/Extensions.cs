@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 
-namespace Cselian.Chess
+namespace Cselian.Chess.Game
 {
 	public static class xt
 	{

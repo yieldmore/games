@@ -2,11 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace Cselian.Chess
+namespace Cselian.Chess.Game
 {
 	public class Square
 	{
-
 		public const int Size = 50, Padding = 10;
 
 		private readonly Label ui = new Label() { AutoSize = false, Height = Size, Width = Size, TextAlign=System.Drawing.ContentAlignment.MiddleCenter, BorderStyle = BorderStyle.Fixed3D, Text = "." };
@@ -39,7 +38,7 @@ namespace Cselian.Chess
 
 		void ui_DoubleClick(object sender, EventArgs e)
 		{
-			ui.Text = Piece.HasValue ? Piece.Value.ToString() : "null";	
+			ui.Text = Piece.HasValue ? Piece.Value.ToString() : "null";
 		}
 	}
 }

@@ -62,18 +62,20 @@
     <Compile Include="About.Designer.cs">
       <DependentUpon>About.cs</DependentUpon>
     </Compile>
-    <Compile Include="Board.cs" />
-    <Compile Include="Extensions.cs" />
+    <Compile Include="Game\Board.cs" />
+    <Compile Include="Game\Extensions.cs" />
+    <Compile Include="Game\MoveResolver.cs" />
+    <Compile Include="Game\Piece.cs" />
+    <Compile Include="Game\PieceId.cs" />
+    <Compile Include="Game\PieceEventArgs.cs" />
+    <Compile Include="Game\Square.cs" />
+    <Compile Include="Game\Who.cs" />
     <Compile Include="ChessGame.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ChessGame.Designer.cs">
       <DependentUpon>ChessGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="MoveResolver.cs" />
-    <Compile Include="Piece.cs" />
-    <Compile Include="PieceId.cs" />
-    <Compile Include="PieceEventArgs.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="WinHelper.cs" />
     <EmbeddedResource Include="About.resx">
@@ -82,8 +84,6 @@
     <EmbeddedResource Include="ChessGame.resx">
       <DependentUpon>ChessGame.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Square.cs" />
-    <Compile Include="Who.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -101,6 +101,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Changelog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -3,11 +3,10 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Cselian.Chess
+namespace Cselian.Chess.Game
 {
 	public class Piece
 	{
-
 		private static readonly string fol = @"pieces\";
 
 		static Piece()
@@ -118,6 +117,7 @@ namespace Cselian.Chess
 		private bool Selected { set { Square.Selected = value; ui.BackColor = value ? Square.SelectedColor : Square.Color; } }
 
 		private Square sq;
+
 		public Square Square
 		{
 			get { return sq; }
@@ -131,7 +131,5 @@ namespace Cselian.Chess
 				if (sq == null) sq.Piece = null; else sq.Piece = Id;
 			}
 		}
-
 	}
-
 }

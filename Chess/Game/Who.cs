@@ -1,4 +1,4 @@
-﻿namespace Cselian.Chess
+﻿namespace Cselian.Chess.Game
 {
 	public enum Who
 	{

@@ -1,7 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Cselian.Chess
+namespace Cselian.Chess.Game
 {
+	/// <summary>
+	/// For the given piece, tries to add a list of available squares to move to
+	/// </summary>
 	public class MoveResolver
 	{
 		/// <summary>

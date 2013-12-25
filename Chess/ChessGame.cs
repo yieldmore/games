@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using Cselian.Chess.Game;
 
 namespace Cselian.Chess
 {

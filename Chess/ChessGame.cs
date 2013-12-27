@@ -6,16 +6,12 @@ namespace Cselian.Chess
 {
 	public partial class ChessGame : Form
 	{
-		private UIModes Mode;
-
-		Board b1, b2;
+		private UIModes Screen;
+		private UIModes OtherScreen;
 
 		public ChessGame(UIModes mode = null)
 		{
 			InitializeComponent();
-
-			this.DoubleClick += new EventHandler(ChessGame_DoubleClick);
-			ChessGame_DoubleClick(null, null);
 
 			All.SplitterDistance = Square.Size + 16;
 			Boards.Panel1.AutoScroll = true;
@@ -24,52 +20,60 @@ namespace Cselian.Chess
 			Boards.Panel2.AutoScrollMinSize = OppBoard.Size;
 			All.FixedPanel = FixedPanel.Panel1;
 
-			Mode = mode ?? new UIModes(UIModes.UIState.Dual_Window, false);
+			Screen = mode ?? new UIModes(this, UIModes.UIState.Dual_Window, true);
 		}
 
 		protected override void OnShown(EventArgs e)
 		{
 			base.OnShown(e);
 
-			UIModeMnu.CycleStates<UIModes.UIState>(UIModeMnu_StateChanged);
-			SetUIState();
+			WinHelper.CycleStates<UIModes.UIState>(UIModeMnu, UIModeMnu_StateChanged);
+			SetGameState();
 		}
 
-		void ChessGame_DoubleClick(object sender, EventArgs e)
+		void SetGameState()
 		{
-			if (b1 != null)
+			var txt = Screen.State.ToString().Replace("_", " ");
+			UIModeMnu.Text = "UI: " + txt;
+
+			if (Screen.Clear)
 			{
-				b1 = b2 = null;
-				Board.Controls.Clear();
-				OppBoard.Controls.Clear();
-				OppKilled.Controls.Clear();
-				MyKilled.Controls.Clear();
+				Screen.ClearBoards(Board, OppBoard, MyKilled, OppKilled);
+				if (OtherScreen != null)
+				{
+					OtherScreen.Hide();
+					OtherScreen = null;
+				}
+
+				Screen.Clear = false;
+				return;
 			}
-			else
+
+			if (Screen.Board == null)
 			{
-				b1 = new Board(Board, OppKilled, MyKilled, false);
-				b2 = new Board(OppBoard, null, null, true);
-				b1.SetOtherBoard(b2);
-				b2.SetOtherBoard(b1);
+				Screen.CreateBoards(Board, OppBoard, MyKilled, OppKilled);
+			}
+
+			if (Screen.State == UIModes.UIState.Dual_Window && Screen.IsHost)
+			{
+				if (OtherScreen == null)
+				{
+					OtherScreen = new UIModes(Screen.State, false);
+				}
+
+				OtherScreen.Show();
+			}
+			else if (OtherScreen != null)
+			{
+				OtherScreen.Hide();
 			}
 		}
 
 		private void UIModeMnu_StateChanged(object sender, EventArgs e)
 		{
-			Mode.State = UIModeMnu.GetState<UIModes.UIState>();
-			SetUIState();
-		}
-
-		private void SetUIState()
-		{
-			var txt = Mode.State.ToString().Replace("_", " ");
-			// MessageBox.Show("Changed to " + txt);
-			UIModeMnu.Text = "UI: " + txt;
-
-			if (Mode.State == UIModes.UIState.Dual_Window && Mode.IsHost == false)
-			{
-				//new ChessGame(new UIModes(Mode.State, true)).Show();
-			}
+			Screen.State = WinHelper.GetState<UIModes.UIState>(UIModeMnu);
+			SetGameState();
+			ModeMyIP.Visible = ModeOtherIP.Visible = Screen.State == UIModes.UIState.Remote;
 		}
 
 		private void AboutMnu_Click(object sender, EventArgs e)

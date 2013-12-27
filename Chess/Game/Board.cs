@@ -51,16 +51,16 @@ namespace Cselian.Chess.Game
 		private readonly Square[,] AllSquares = new Square[9, 9];
 		private readonly bool inverted; private bool blacksTurn;
 		private readonly List<Piece> AllPieces = new List<Piece>();
-		private readonly Control board, wKilled, bKilled;
+		private readonly Control board, killed, oppKilled;
 
 		private Board otherBoard; 
 		List<PieceId> moved = new List<PieceId>(); //track rooks and kings for castling
 
 		public event EventHandler<PieceEventArgs> PieceMove;
 
-		public Board(Control board, Control wKilled, Control bKilled, bool inverted)
+		public Board(Control board, Control killed, Control oppKilled, bool inverted)
 		{
-			this.board = board; this.wKilled = wKilled; this.bKilled = bKilled;
+			this.board = board; this.killed = killed; this.oppKilled = oppKilled;
 			this.inverted = inverted;
 			for (int x = 1; x < 9; x++) for (int y = 1; y < 9; y++) AllSquares[x, y] = new Square(board, x, y, inverted);
 
@@ -82,7 +82,7 @@ namespace Cselian.Chess.Game
 		{
 			if (e.NewSquarePiece.HasValue)
 			{
-				xt.Item(AllPieces, e.NewSquarePiece.Value).Kill(board, bKilled, wKilled);
+				xt.Item(AllPieces, e.NewSquarePiece.Value).Kill(board, killed, oppKilled);
 			}
 
 			Piece p = xt.Item(AllPieces, (sender as Piece).Id);

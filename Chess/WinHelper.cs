@@ -5,7 +5,7 @@ namespace Cselian.Chess
 {
 	public static class WinHelper
 	{
-		public static void CycleStates<T>(this ToolStripSplitButton mnu, EventHandler setState)
+		public static void CycleStates<T>(ToolStripSplitButton mnu, EventHandler setState)
 		{
 			mnu.Click += tsitm_Click;
 			var cnt = Enum.GetValues(typeof(T)).Length;
@@ -20,7 +20,7 @@ namespace Cselian.Chess
 			mnu.Click += mnuitm_Click;
 		}
 
-		public static T GetState<T>(this ToolStripSplitButton mnu)
+		public static T GetState<T>(ToolStripSplitButton mnu)
 		{
 			var tag = (CnC)mnu.Tag;
 			object op = 0;
@@ -40,7 +40,7 @@ namespace Cselian.Chess
 		{
 			var mnu = (ToolStripSplitButton)sender;
 			var tag = (CnC)mnu.Tag;
-			var ix = mnu.GetState<int>() + 1;
+			var ix = GetState<int>(mnu) + 1;
 			if (ix == tag.Count)
 			{
 				ix = 0;
@@ -52,7 +52,7 @@ namespace Cselian.Chess
 
 		private static void tsitm_Click(object sender, EventArgs e)
 		{
-			if (! (sender is ToolStripMenuItem))
+			if (!(sender is ToolStripMenuItem))
 			{
 				return;
 			}
@@ -65,6 +65,7 @@ namespace Cselian.Chess
 				var itm = (ToolStripMenuItem)mnu.DropDownItems[i];
 				itm.Checked = itm == selected;
 			}
+
 			tag.Callback.Invoke(mnu, EventArgs.Empty);
 		}
 
@@ -79,7 +80,8 @@ namespace Cselian.Chess
 
 			public CnC(int count, EventHandler callback)
 			{
-
+				Count = count;
+				Callback = callback;
 			}
 		}
 	}

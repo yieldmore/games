@@ -3,7 +3,7 @@
 * Game namespace (move files)
 * Create Toolbar + UIModes
 * SetGameState and use OtherScreen
-* Screen.SetState, rename UIModes to UIScreen
+* Screen.SetState (text and UI), rename UIModes to UIScreen
 
 
 == 2010 Italy

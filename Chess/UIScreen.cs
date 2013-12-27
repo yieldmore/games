@@ -7,8 +7,8 @@ namespace Cselian.Chess
 	{
 		public enum UIState
 		{
-			Same_Window = 0,
-			Dual_Window = 1,
+			Same_Screen = 0,
+			Dual_Screens = 1,
 			Remote = 2,
 		}
 
@@ -40,7 +40,7 @@ namespace Cselian.Chess
 		{
 			var inverseForWhite = !IsHost;
 			Board = new Board(board, killed, oppKilled, inverseForWhite);
-			InvertedBoard = new Board(oppBoard, null, null, ! inverseForWhite);
+			InvertedBoard = new Board(oppBoard, null, null, !inverseForWhite);
 
 			Board.SetOtherBoard(InvertedBoard);
 			InvertedBoard.SetOtherBoard(Board);
@@ -61,6 +61,21 @@ namespace Cselian.Chess
 
 		public void SetState()
 		{
+			Game.SetOtherVisible(State == UIState.Same_Screen);
+
+			switch (State)
+			{
+				case UIState.Dual_Screens:
+					Game.Text = "[" + (IsHost ? "White" : "Black") + "] Chess by Cselian";
+					break;
+				case UIState.Remote:
+					Game.Text = "Remote Chess by Cselian [with: " + Game.GetOtherIP() + "]";
+					break;
+				case UIState.Same_Screen:
+				default:
+					Game.Text = "Chess by Cselian";
+					break;
+			}
 		}
 	}
 }

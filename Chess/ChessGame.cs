@@ -13,6 +13,8 @@ namespace Cselian.Chess
 		{
 			InitializeComponent();
 
+			AboutMnu.Click += AboutMnu_Click;
+
 			All.SplitterDistance = Square.Size + 16;
 			Boards.Panel1.AutoScroll = true;
 			Boards.Panel1.AutoScrollMinSize = Board.Size;
@@ -20,22 +22,38 @@ namespace Cselian.Chess
 			Boards.Panel2.AutoScrollMinSize = OppBoard.Size;
 			All.FixedPanel = FixedPanel.Panel1;
 
-			Screen = mode ?? new UIScreen(this, UIScreen.UIState.Dual_Window, true);
+			Screen = mode ?? new UIScreen(this, UIScreen.UIState.Dual_Screens, true);
+		}
+
+		public void SetOtherVisible(bool visible)
+		{
+			Boards.Panel2Collapsed = !visible;
+		}
+
+		public string GetOtherIP()
+		{
+			return ModeOtherIP.Text.Length > 0 ? ModeOtherIP.Text : "not set";
 		}
 
 		protected override void OnShown(EventArgs e)
 		{
 			base.OnShown(e);
 
-			if (Screen.State == UIScreen.UIState.Dual_Window && !Screen.IsHost)
+			if (Screen.State == UIScreen.UIState.Dual_Screens && !Screen.IsHost)
+			{
 				UIModeMnu.Visible = false;
+			}
 			else
+			{
 				WinHelper.CycleStates<UIScreen.UIState>(UIModeMnu, UIModeMnu_StateChanged);
+				var ix = WinHelper.GetState<int>(UIModeMnu);
+				(UIModeMnu.DropDownItems[ix] as ToolStripMenuItem).Checked = true;
+			}
 
 			SetGameState();
 		}
 
-		void SetGameState()
+		private void SetGameState()
 		{
 			var txt = Screen.State.ToString().Replace("_", " ");
 			UIModeMnu.Text = "UI: " + txt;
@@ -45,7 +63,7 @@ namespace Cselian.Chess
 				Screen.ClearBoards(Board, OppBoard, MyKilled, OppKilled);
 				if (OtherScreen != null)
 				{
-					OtherScreen.Hide();
+					OtherScreen.Game.Hide();
 					OtherScreen = null;
 				}
 
@@ -59,7 +77,7 @@ namespace Cselian.Chess
 			}
 
 			Screen.SetState();
-			if (Screen.State == UIScreen.UIState.Dual_Window && Screen.IsHost)
+			if (Screen.State == UIScreen.UIState.Dual_Screens && Screen.IsHost)
 			{
 				if (OtherScreen == null)
 				{

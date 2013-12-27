@@ -57,9 +57,9 @@
 			// 
 			// All
 			// 
-			this.All.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+			this.All.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+			| System.Windows.Forms.AnchorStyles.Left)
+			| System.Windows.Forms.AnchorStyles.Right)));
 			this.All.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
 			this.All.Location = new System.Drawing.Point(10, 38);
 			this.All.Name = "All";
@@ -162,7 +162,7 @@
 			this.MenuCtl.Name = "MenuCtl";
 			this.MenuCtl.Size = new System.Drawing.Size(408, 25);
 			this.MenuCtl.TabIndex = 6;
-			this.MenuCtl.Text = "toolStrip1";
+			this.MenuCtl.Text = "MainMenu";
 			// 
 			// UIModeMnu
 			// 
@@ -182,13 +182,13 @@
 			// 
 			this.ModeDualMnu.Name = "ModeDualMnu";
 			this.ModeDualMnu.Size = new System.Drawing.Size(171, 22);
-			this.ModeDualMnu.Text = "&Dual View";
+			this.ModeDualMnu.Text = "&Same Screen";
 			// 
 			// ModeSeparateMnu
 			// 
 			this.ModeSeparateMnu.Name = "ModeSeparateMnu";
 			this.ModeSeparateMnu.Size = new System.Drawing.Size(171, 22);
-			this.ModeSeparateMnu.Text = "&Separate Windows";
+			this.ModeSeparateMnu.Text = "&Dual Screens";
 			// 
 			// ModeRemoteMnu
 			// 

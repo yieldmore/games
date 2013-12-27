@@ -7,7 +7,6 @@ namespace Cselian.Chess
 	{
 		public static void CycleStates<T>(ToolStripSplitButton mnu, EventHandler setState)
 		{
-			mnu.Click += tsitm_Click;
 			var cnt = Enum.GetValues(typeof(T)).Length;
 			mnu.Tag = new CnC(cnt, setState);
 			for (int i = 0; i < cnt; i++)
@@ -17,7 +16,7 @@ namespace Cselian.Chess
 				itm.Click += tsitm_Click;
 			}
 
-			mnu.Click += mnuitm_Click;
+			mnu.ButtonClick += mnuitm_Click;
 		}
 
 		public static T GetState<T>(ToolStripSplitButton mnu)
@@ -52,11 +51,6 @@ namespace Cselian.Chess
 
 		private static void tsitm_Click(object sender, EventArgs e)
 		{
-			if (!(sender is ToolStripMenuItem))
-			{
-				return;
-			}
-
 			var selected = (ToolStripMenuItem)sender;
 			var mnu = (ToolStripSplitButton)selected.Tag;
 			var tag = (CnC)mnu.Tag;

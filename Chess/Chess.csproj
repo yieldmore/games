@@ -77,7 +77,7 @@
       <DependentUpon>ChessGame.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="UIModes.cs" />
+    <Compile Include="UIScreen.cs" />
     <Compile Include="WinHelper.cs" />
     <EmbeddedResource Include="About.resx">
       <DependentUpon>About.cs</DependentUpon>

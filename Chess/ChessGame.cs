@@ -6,10 +6,10 @@ namespace Cselian.Chess
 {
 	public partial class ChessGame : Form
 	{
-		private UIModes Screen;
-		private UIModes OtherScreen;
+		private UIScreen Screen;
+		private UIScreen OtherScreen;
 
-		public ChessGame(UIModes mode = null)
+		public ChessGame(UIScreen mode = null)
 		{
 			InitializeComponent();
 
@@ -20,14 +20,18 @@ namespace Cselian.Chess
 			Boards.Panel2.AutoScrollMinSize = OppBoard.Size;
 			All.FixedPanel = FixedPanel.Panel1;
 
-			Screen = mode ?? new UIModes(this, UIModes.UIState.Dual_Window, true);
+			Screen = mode ?? new UIScreen(this, UIScreen.UIState.Dual_Window, true);
 		}
 
 		protected override void OnShown(EventArgs e)
 		{
 			base.OnShown(e);
 
-			WinHelper.CycleStates<UIModes.UIState>(UIModeMnu, UIModeMnu_StateChanged);
+			if (Screen.State == UIScreen.UIState.Dual_Window && !Screen.IsHost)
+				UIModeMnu.Visible = false;
+			else
+				WinHelper.CycleStates<UIScreen.UIState>(UIModeMnu, UIModeMnu_StateChanged);
+
 			SetGameState();
 		}
 
@@ -54,26 +58,29 @@ namespace Cselian.Chess
 				Screen.CreateBoards(Board, OppBoard, MyKilled, OppKilled);
 			}
 
-			if (Screen.State == UIModes.UIState.Dual_Window && Screen.IsHost)
+			Screen.SetState();
+			if (Screen.State == UIScreen.UIState.Dual_Window && Screen.IsHost)
 			{
 				if (OtherScreen == null)
 				{
-					OtherScreen = new UIModes(Screen.State, false);
+					OtherScreen = new UIScreen(Screen.State, false);
+					OtherScreen.CreateGame();
 				}
 
-				OtherScreen.Show();
+				OtherScreen.SetState();
+				OtherScreen.Game.Show();
 			}
 			else if (OtherScreen != null)
 			{
-				OtherScreen.Hide();
+				OtherScreen.Game.Hide();
 			}
 		}
 
 		private void UIModeMnu_StateChanged(object sender, EventArgs e)
 		{
-			Screen.State = WinHelper.GetState<UIModes.UIState>(UIModeMnu);
+			Screen.State = WinHelper.GetState<UIScreen.UIState>(UIModeMnu);
 			SetGameState();
-			ModeMyIP.Visible = ModeOtherIP.Visible = Screen.State == UIModes.UIState.Remote;
+			ModeMyIP.Visible = ModeOtherIP.Visible = Screen.State == UIScreen.UIState.Remote;
 		}
 
 		private void AboutMnu_Click(object sender, EventArgs e)

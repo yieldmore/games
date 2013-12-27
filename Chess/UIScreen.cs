@@ -3,7 +3,7 @@ using Cselian.Chess.Game;
 
 namespace Cselian.Chess
 {
-	public class UIModes
+	public class UIScreen
 	{
 		public enum UIState
 		{
@@ -20,13 +20,13 @@ namespace Cselian.Chess
 
 		public ChessGame Game { get; private set; }
 
-		public UIModes(ChessGame game, UIState state, bool host)
+		public UIScreen(ChessGame game, UIState state, bool host)
 			: this(state, host)
 		{
 			Game = game;
 		}
 
-		public UIModes(UIState state, bool host)
+		public UIScreen(UIState state, bool host)
 		{
 			State = state;
 			IsHost = host;
@@ -38,8 +38,9 @@ namespace Cselian.Chess
 
 		public void CreateBoards(Control board, Control oppBoard, Control killed, Control oppKilled)
 		{
-			Board = new Board(board, killed, oppKilled, false);
-			InvertedBoard = new Board(oppBoard, null, null, true);
+			var inverseForWhite = !IsHost;
+			Board = new Board(board, killed, oppKilled, inverseForWhite);
+			InvertedBoard = new Board(oppBoard, null, null, ! inverseForWhite);
 
 			Board.SetOtherBoard(InvertedBoard);
 			InvertedBoard.SetOtherBoard(Board);
@@ -53,22 +54,13 @@ namespace Cselian.Chess
 			killed.Controls.Clear();
 		}
 
-		public void Show()
+		public void CreateGame()
 		{
-			if (Game == null)
-			{
-				Game = new ChessGame(this);
-			}
-
-			Game.Show();
+			Game = new ChessGame(this);
 		}
 
-		public void Hide()
+		public void SetState()
 		{
-			if (Game != null)
-			{
-				Game.Hide();
-			}
 		}
 	}
 }

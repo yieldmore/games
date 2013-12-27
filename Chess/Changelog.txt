@@ -1,6 +1,8 @@
 
-== 25th Dec 2013
-* Game namespace (move)
+== 25th Dec 2013 - 6th Jan 2014
+* Game namespace (move files)
+* Create Toolbar + UIModes
+
 
 == 2010 Italy
 * Complete dual board with cutting pieces and all moves

@@ -6,9 +6,11 @@ namespace Cselian.Chess
 {
 	public partial class ChessGame : Form
 	{
+		private UIModes Mode;
+
 		Board b1, b2;
 
-		public ChessGame()
+		public ChessGame(UIModes mode = null)
 		{
 			InitializeComponent();
 
@@ -21,7 +23,16 @@ namespace Cselian.Chess
 			Boards.Panel2.AutoScroll = true;
 			Boards.Panel2.AutoScrollMinSize = OppBoard.Size;
 			All.FixedPanel = FixedPanel.Panel1;
-			WinHelper.CycleTristate(RemoteMnu, RemoteMnu_CheckStateChanged);
+
+			Mode = mode ?? new UIModes(UIModes.UIState.Dual_Window, false);
+		}
+
+		protected override void OnShown(EventArgs e)
+		{
+			base.OnShown(e);
+
+			UIModeMnu.CycleStates<UIModes.UIState>(UIModeMnu_StateChanged);
+			SetUIState();
 		}
 
 		void ChessGame_DoubleClick(object sender, EventArgs e)
@@ -43,10 +54,22 @@ namespace Cselian.Chess
 			}
 		}
 
-		private void RemoteMnu_CheckStateChanged(object sender, EventArgs e)
+		private void UIModeMnu_StateChanged(object sender, EventArgs e)
 		{
-			var itm = (ToolStripMenuItem)sender;
-			MessageBox.Show("Changed to " + itm.CheckState); 
+			Mode.State = UIModeMnu.GetState<UIModes.UIState>();
+			SetUIState();
+		}
+
+		private void SetUIState()
+		{
+			var txt = Mode.State.ToString().Replace("_", " ");
+			// MessageBox.Show("Changed to " + txt);
+			UIModeMnu.Text = "UI: " + txt;
+
+			if (Mode.State == UIModes.UIState.Dual_Window && Mode.IsHost == false)
+			{
+				//new ChessGame(new UIModes(Mode.State, true)).Show();
+			}
 		}
 
 		private void AboutMnu_Click(object sender, EventArgs e)

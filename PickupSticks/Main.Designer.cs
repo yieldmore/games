@@ -30,6 +30,7 @@
 		{
 			this.btnShuffle = new System.Windows.Forms.Button();
 			this.pnlSticks = new System.Windows.Forms.Panel();
+			this.lblMsg = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnShuffle
@@ -52,17 +53,28 @@
 			this.pnlSticks.Size = new System.Drawing.Size(535, 262);
 			this.pnlSticks.TabIndex = 1;
 			this.pnlSticks.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlSticks_Paint);
+			this.pnlSticks.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pnlSticks_MouseDown);
+			// 
+			// lblMsg
+			// 
+			this.lblMsg.AutoSize = true;
+			this.lblMsg.Location = new System.Drawing.Point(93, 17);
+			this.lblMsg.Name = "lblMsg";
+			this.lblMsg.Size = new System.Drawing.Size(0, 13);
+			this.lblMsg.TabIndex = 0;
 			// 
 			// Main
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(559, 315);
+			this.Controls.Add(this.lblMsg);
 			this.Controls.Add(this.pnlSticks);
 			this.Controls.Add(this.btnShuffle);
 			this.Name = "Main";
 			this.Text = "Cselian - Pickupsticks";
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -70,6 +82,7 @@
 
 		private System.Windows.Forms.Button btnShuffle;
 		private System.Windows.Forms.Panel pnlSticks;
+		private System.Windows.Forms.Label lblMsg;
 	}
 }
 

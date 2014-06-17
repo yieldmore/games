@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace Cselian.Sudoku
+namespace Cselian.Games.PickupSticks
 {
 	static class Program
 	{
@@ -13,7 +13,7 @@ namespace Cselian.Sudoku
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Form1());
+			Application.Run(new Main());
 		}
 	}
 }

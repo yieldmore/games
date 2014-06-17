@@ -1,18 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Linq;
+using System.Reflection;
 
 namespace Cselian.Games.PickupSticks
 {
 	public class Stick
 	{
+		private static Pen[] allPens;
+
 		public Point Start { get; private set; }
 
 		public Point End { get; private set; }
 
 		public int Order { get; private set; }
 
+		public Pen Pen { get; private set; }
+
 		public bool Removed { get; private set; }
+
+		static Stick()
+		{
+			var type = typeof(Pens);
+			allPens = type.GetProperties(BindingFlags.Static | BindingFlags.Public)
+				.Select(x => type.GetProperty(x.Name, BindingFlags.Static | BindingFlags.Public).GetValue(null, null))
+				.Cast<Pen>().Select(x => new Pen(x.Color, 4))
+				.Cast<Pen>().ToArray();
+		}
 
 		public static Stick[] CreateSticks(Point edge, int count)
 		{
@@ -27,6 +42,7 @@ namespace Cselian.Games.PickupSticks
 				var stick = new Stick
 				{
 					Start = new Point(r.Next(edge.X), r.Next(edge.Y)),
+					Pen = allPens[r.Next(allPens.Length)],
 					Order = sticks.Count
 				};
 

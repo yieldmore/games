@@ -17,10 +17,9 @@ namespace Cselian.Games.PickupSticks
 		private void pnlSticks_Paint(object sender, PaintEventArgs e)
 		{
 			if (sticks == null) return;
-			var pen = new Pen(Brushes.Black, 4);
 			foreach (var s in sticks)
 			{
-				e.Graphics.DrawLine(pen, s.Start, s.End);
+				e.Graphics.DrawLine(s.Pen, s.Start, s.End);
 			}
 			e.Dispose();
 		}

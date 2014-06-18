@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sudoku", "Sudoku\Sudoku.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickupSticks", "PickupSticks\PickupSticks.csproj", "{D6114A4B-9797-4D18-8AD3-C28A54394F46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brainvita", "Brainvita\Brainvita.csproj", "{0218574E-DB8F-4905-B2C2-1DEE20FD7912}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,10 @@ Global
 		{D6114A4B-9797-4D18-8AD3-C28A54394F46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D6114A4B-9797-4D18-8AD3-C28A54394F46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D6114A4B-9797-4D18-8AD3-C28A54394F46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0218574E-DB8F-4905-B2C2-1DEE20FD7912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0218574E-DB8F-4905-B2C2-1DEE20FD7912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0218574E-DB8F-4905-B2C2-1DEE20FD7912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0218574E-DB8F-4905-B2C2-1DEE20FD7912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

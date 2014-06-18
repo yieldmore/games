@@ -8,7 +8,7 @@
     <ProjectGuid>{55F4913B-FBFC-4101-A758-1040EEB39507}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Sudoku</RootNamespace>
-    <AssemblyName>Sudoku</AssemblyName>
+    <AssemblyName>CS-Sudoku</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\exe\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>

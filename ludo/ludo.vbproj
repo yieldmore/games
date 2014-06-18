@@ -7,9 +7,9 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{65B48C7C-AA5D-4C5A-8C20-E23AA603AB19}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <StartupObject>ludo.LudoScreen</StartupObject>
-    <RootNamespace>ludo</RootNamespace>
-    <AssemblyName>ludo</AssemblyName>
+    <StartupObject>Cselian.Games.Ludo.LudoScreen</StartupObject>
+    <RootNamespace>Cselian.Games.Ludo</RootNamespace>
+    <AssemblyName>CS-Ludo</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
@@ -27,8 +27,8 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>ludo.xml</DocumentationFile>
+    <OutputPath>..\exe\</OutputPath>
+    <DocumentationFile>CS-Ludo.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
@@ -38,7 +38,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>Compile\</OutputPath>
-    <DocumentationFile>ludo.xml</DocumentationFile>
+    <DocumentationFile>CS-Ludo.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>

@@ -7,8 +7,8 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{ECF004E8-1401-478B-A9D2-128B43EED55D}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Cselian.Chess</RootNamespace>
-    <AssemblyName>Cselian.Chess</AssemblyName>
+    <RootNamespace>Cselian.Games.Chess</RootNamespace>
+    <AssemblyName>CS-Chess</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>

@@ -21,15 +21,24 @@ namespace Cselian.Games.PickupSticks
 			if (sticks == null) return;
 			foreach (var s in sticks)
 			{
-				if (s.Removed) continue;
+				if (s.Removed) 
+					continue;
 				e.Graphics.DrawLine(s.Pen, s.Start, s.End);
+				if (chkShow.Checked) 
+					e.Graphics.DrawString((s.Order + 1).ToString(), Font, Brushes.Black, new Point(s.Start.X - 10, s.Start.Y - 6));
 			}
+
 			e.Dispose();
 		}
 
 		private void btnShuffle_Click(object sender, EventArgs e)
 		{
-			sticks = Stick.CreateSticks(new Point(pnlSticks.Width, pnlSticks.Height), 15);
+			sticks = Stick.CreateSticks(new Point(pnlSticks.Width, pnlSticks.Height), int.Parse(txtCount.Text));
+			pnlSticks.Invalidate();
+		}
+
+		private void chkShow_CheckedChanged(object sender, EventArgs e)
+		{
 			pnlSticks.Invalidate();
 		}
 
@@ -43,15 +52,15 @@ namespace Cselian.Games.PickupSticks
 				{
 					lblMsg.Text = "Removed #" + ix;
 					s.Removed = true;
-					if (sticks.Any(x => x.Removed == false) == false)
-					{
-						lblMsg.Text += " - GAME OVER";
-					}
+					var left = sticks.Count(x => x.Removed == false);
+					lblMsg.Text += left == 0 ? " - GAME OVER" : " " + left.ToString() + " left";
 					pnlSticks.Invalidate();
 				}
 				else
 				{
 					lblMsg.Text = "Could not remove #" + ix;
+					var left = sticks.Count(x => x.Removed == false);
+					lblMsg.Text += " " + left.ToString() + " left";
 				}
 			}
 		}

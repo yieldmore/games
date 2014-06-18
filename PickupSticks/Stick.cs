@@ -29,8 +29,8 @@ namespace Cselian.Games.PickupSticks
 			var type = typeof(Pens);
 			allPens = type.GetProperties(BindingFlags.Static | BindingFlags.Public)
 				.Select(x => type.GetProperty(x.Name, BindingFlags.Static | BindingFlags.Public).GetValue(null, null))
-				.Cast<Pen>().Select(x => new Pen(x.Color, StickWidth))
-				.Cast<Pen>().ToArray();
+				.Cast<Pen>().Where(x => NotTooLight(x.Color))
+				.Select(x => new Pen(x.Color, StickWidth)).ToArray();
 		}
 
 		public static List<Stick> CreateSticks(Point edge, int count)
@@ -92,14 +92,28 @@ namespace Cselian.Games.PickupSticks
 
 		private bool Intersects(Stick s)
 		{
-			int o1 = Orientation(s.Start, s.End, Start);
-			int o2 = Orientation(s.Start, s.End, End);
-			int o3 = Orientation(Start, End, s.Start);
-			int o4 = Orientation(Start, End, s.End);
+			Point p1 = s.Start, q1 = s.End, p2 = Start, q2 = End;
+			int o1 = Orientation(p1, q1, p2);
+			int o2 = Orientation(p1, q1, q2);
+			int o3 = Orientation(p2, q2, p1);
+			int o4 = Orientation(p2, q2, q1);
 
 			// General case
 			if (o1 != o2 && o3 != o4)
 				return true;
+
+			// Special Cases
+			// p1, q1 and p2 are colinear and p2 lies on segment p1q1
+			if (o1 == 0 && OnSegment(p1, p2, q1)) return true;
+
+			// p1, q1 and p2 are colinear and q2 lies on segment p1q1
+			if (o2 == 0 && OnSegment(p1, q2, q1)) return true;
+
+			// p2, q2 and p1 are colinear and p1 lies on segment p2q2
+			if (o3 == 0 && OnSegment(p2, p1, q2)) return true;
+
+			// p2, q2 and q1 are colinear and q1 lies on segment p2q2
+			if (o4 == 0 && OnSegment(p2, q1, q2)) return true;
 
 			return false; // dont bother checking if collinear
 		}
@@ -112,6 +126,20 @@ namespace Cselian.Games.PickupSticks
 			if (val == 0) return 0;  // colinear
 
 			return (val > 0) ? 1 : 2; // clock or counterclock wise
+		}
+
+		private bool OnSegment(Point p, Point q, Point r)
+		{
+			if (q.X <= Math.Max(p.X, r.X) && q.X >= Math.Min(p.X, r.X) &&
+				q.Y <= Math.Max(p.Y, r.Y) && q.Y >= Math.Min(p.Y, r.Y))
+				return true;
+
+			return false;
+		}
+
+		private static bool NotTooLight(Color c)
+		{
+			return c.R * c.G * c.B <= 8000000;
 		}
 	}
 }

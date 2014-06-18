@@ -12,8 +12,9 @@ namespace Cselian.Games.Brainvita
 			Marble.SetMarbles(this);
 		}
 
-		void Main_MouseDoubleClick(object sender, MouseEventArgs e)
+		private void btnReset_Click(object sender, System.EventArgs e)
 		{
+			Marble.Reset();
 		}
 	}
 }

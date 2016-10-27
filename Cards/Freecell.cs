@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Cselian.Cards
 {
 	class Freecell
 	{
-
 		const int ColumnCount = 8;
 		CardView[] tempCards = new CardView[4];
 		List<List<CardView>> finishedCards = new List<List<CardView>>();

@@ -11,3 +11,4 @@ exe/*.pdb
 exe/*.xml
 exe/*.config
 exe/*.vshost.exe
+/exe/*.exe

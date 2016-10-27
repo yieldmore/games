@@ -38,7 +38,7 @@ namespace Cselian.Chess.Game
 
 		void ui_DoubleClick(object sender, EventArgs e)
 		{
-			ui.Text = Piece.HasValue ? Piece.Value.ToString() : "null";
+			ui.Text = Piece?.ToString() ?? "null";
 		}
 	}
 }

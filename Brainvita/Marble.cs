@@ -13,9 +13,9 @@ namespace Cselian.Games.Brainvita
 			N, S, E, W
 		}
 
-		public const int MarbleSize = 60;
+	    private const int _marbleSize = 60;
 
-		private static Dictionary<int, Marble> Marbles;
+		private static Dictionary<int, Marble> _marbles;
 
 		public static void SetMarbles(Form frm)
 		{
@@ -30,14 +30,14 @@ namespace Cselian.Games.Brainvita
 				}
 			}
 
-			Marbles = marbles.ToDictionary(x => x.Key, x => x);
-			Marbles[55].SetState(0);
+            _marbles = marbles.ToDictionary(x => x.Key, x => x);
+            _marbles[55].SetState(0);
 		}
 
 		public static void Reset()
 		{
-			Marbles.Values.ToList().ForEach(x => x.SetState(1));
-			Marbles[55].SetState(0);
+            _marbles.Values.ToList().ForEach(x => x.SetState(1));
+            _marbles[55].SetState(0);
 		}
 
 		private PictureBox pic;
@@ -51,10 +51,10 @@ namespace Cselian.Games.Brainvita
 
 			pic = new PictureBox
 			{
-				Left = (x - 1) * MarbleSize + 10,
-				Top = (y - 1) * MarbleSize + 10,
-				Height = MarbleSize,
-				Width = MarbleSize,
+				Left = (x - 1) * _marbleSize + 10,
+				Top = (y - 1) * _marbleSize + 10,
+				Height = _marbleSize,
+				Width = _marbleSize,
 				Visible = true,
 			};
 			SetState(1);
@@ -128,7 +128,7 @@ namespace Cselian.Games.Brainvita
 		private Marble Move(int x, int y)
 		{
 			var key = x * 10 + y;
-			return Marbles.ContainsKey(key) ? Marbles[key] : null;
+			return _marbles.ContainsKey(key) ? _marbles[key] : null;
 		}
 	}
 }
